@@ -1,0 +1,181 @@
+/* =====================================================================
+   themes.css - one look per game, switched by <body data-system="...">
+   Each theme only overrides the variables from style.css plus a few
+   details, so every page layout is shared.
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   THE WITCHER
+   Each school has four colours (from the user's palette):
+     background tint, panel tint, --accent (text highlights) and
+     --mark (buttons, current step). --trim is the thin line on top of
+     each panel. Accents are lightened where needed so text stays readable.
+   Default: School of the Wolf - charcoal, dark brown, oxblood, steel.
+   --------------------------------------------------------------------- */
+body[data-system="witcher"] {
+  --bg: #1b1918;           /* weathered charcoal #2D2D2D, darkened */
+  --surface: #261e1c;      /* dark chocolate brown #3E2723, darkened */
+  --surface-2: #2f2522;
+  --line: #45362f;
+  --line-strong: #6a5a52;
+  --ink: #eee8e4;
+  --muted: #b5a9a3;
+  --accent: #b0bec5;       /* matte silver / steel */
+  --accent-ink: #15191b;
+  --mark: #8b0000;         /* oxblood red */
+  --mark-ink: #ffffff;
+  --trim: #8b0000;
+  --danger: #ef6c5e;
+  --font-head: "Spectral", Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-mono: "Source Sans 3", system-ui, sans-serif;   /* numbers use tabular figures instead */
+  --head-case: none;
+  --head-spacing: 0.01em;
+  --radius: 4px;
+  --radius-small: 3px;
+}
+/* Cat: midnight blue, navy, charcoal black, polished dark steel */
+body[data-system="witcher"][data-school="cat"] {
+  --bg: #141519; --surface: #151a3a; --surface-2: #1b2148; --line: #2a3270; --line-strong: #46539a;
+  --ink: #e9ecf7; --muted: #aab1d1; --accent: #a7bac4; --accent-ink: #10161a;
+  --mark: #0d47a1; --mark-ink: #ffffff; --trim: #78909c;
+}
+/* Griffin: dark forest green, brass gold, dark bronze, polished steel */
+body[data-system="witcher"][data-school="griffin"] {
+  --bg: #0f1610; --surface: #142417; --surface-2: #1a2e1d; --line: #2b4a2f; --line-strong: #496b4c;
+  --ink: #e7edef; --muted: #b6c3b6; --accent: #d4af37; --accent-ink: #1a1404;
+  --mark: #cd7f32; --mark-ink: #1b0f03; --trim: #cd7f32;
+}
+/* Bear: deep earth brown, ash grey, muted olive, heavy chainmail iron */
+body[data-system="witcher"][data-school="bear"] {
+  --bg: #1c1a19; --surface: #2a211e; --surface-2: #332925; --line: #4b4038; --line-strong: #6d6560;
+  --ink: #ece8e4; --muted: #b7b0aa; --accent: #9ccc65; --accent-ink: #121a08;
+  --mark: #558b2f; --mark-ink: #ffffff; --trim: #455a64;
+}
+/* Viper: true black, serpent green, deep charcoal, darkened iron */
+body[data-system="witcher"][data-school="viper"] {
+  --bg: #121212; --surface: #1a2226; --surface-2: #222c31; --line: #37474f; --line-strong: #52656e;
+  --ink: #e5ece8; --muted: #a8b6ae; --accent: #66bb6a; --accent-ink: #08140a;
+  --mark: #2e7d32; --mark-ink: #ffffff; --trim: #263238;
+}
+body[data-system="witcher"] .panel { border-top: 2px solid var(--trim); }
+body[data-system="witcher"] .choice:has(input:checked) { background: color-mix(in srgb, var(--mark) 18%, var(--surface-2)); border-color: var(--accent); }
+
+body[data-system="witcher"] h1 { font-weight: 700; letter-spacing: 0.02em; }
+body[data-system="witcher"] .panel__title { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+body[data-system="witcher"] .btn--primary { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+body[data-system="witcher"] .badge--accent { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+body[data-system="witcher"] .stat { background: var(--bg); }
+body[data-system="witcher"] .stat__value { font-family: "Spectral", Georgia, serif; font-size: 1.7rem; line-height: 1.1; }
+body[data-system="witcher"] .portrait {
+  border-radius: 6px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg);
+  color: var(--accent);
+  font-family: "Spectral", Georgia, serif;
+}
+body[data-system="witcher"] .steps button[aria-current="step"] { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+body[data-system="witcher"] .segmented__options input:checked + span { background: var(--mark); border-color: var(--mark); color: var(--mark-ink); }
+
+/* ---------------------------------------------------------------------
+   VAMPIRE: THE MASQUERADE (5th edition)
+   Near black, thin crimson rules, typewriter type, diamond ratings
+   --------------------------------------------------------------------- */
+body[data-system="vtm"] {
+  --bg: #08080a;
+  --surface: #0e0d10;
+  --surface-2: #131216;
+  --line: #4a1d22;
+  --line-strong: #7d1a20;
+  --ink: #e6e1e1;
+  --muted: #b5abac;
+  --accent: #c8202b;
+  --accent-ink: #ffffff;
+  --danger: #ff6b6b;
+  --font-head: "Special Elite", "Courier New", monospace;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --head-case: uppercase;
+  --head-spacing: 0.14em;
+  --radius: 2px;
+  --radius-small: 2px;
+}
+body[data-system="vtm"] .panel { border-color: var(--line-strong); }
+body[data-system="vtm"] .panel__title { color: #e0454f; font-size: 0.9rem; }
+body[data-system="vtm"] .group-title, body[data-system="vtm"] .eyebrow { color: #e0454f; }
+/* the typewriter face only for headings and choice titles; everything you read is plain sans */
+body[data-system="vtm"] .choice__title { font-family: var(--font-body); text-transform: none; letter-spacing: 0; font-size: 1.02rem; }
+body[data-system="vtm"] .choice:has(input:checked) { background: #1d0d10; }
+body[data-system="vtm"] .portrait {
+  border-radius: 2px; border: 3px solid #d9d4d4; background: #1b1b1d; color: var(--accent);
+  transform: rotate(-3deg); box-shadow: 0 6px 18px rgb(0 0 0 / 0.6);
+}
+body[data-system="vtm"] .dots i,
+body[data-system="vtm"] .dot-picker__dot::before { border-radius: 0; transform: rotate(45deg); }
+body[data-system="vtm"] .boxes i { border-color: var(--accent); }
+
+/* ---------------------------------------------------------------------
+   CYBERPUNK 2020
+   The red-and-white paper sheet, brought forward: off-white panels on
+   black, hard red title bars, clipped corners, condensed italic type
+   --------------------------------------------------------------------- */
+body[data-system="cyberpunk"] {
+  color-scheme: light;
+  --bg: #111113;
+  --surface: #f2f0eb;
+  --surface-2: #ffffff;
+  --line: #d6d1c8;
+  --line-strong: #e1251b;
+  --ink: #141414;
+  --muted: #5d5a55;
+  --accent: #e1251b;
+  --accent-ink: #ffffff;
+  --danger: #c1121f;
+  --ok: #1f7a3a;
+  --focus: #00b3c7;
+  --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --head-case: uppercase;
+  --head-spacing: 0.03em;
+  --radius: 0;
+  --radius-small: 0;
+  background: repeating-linear-gradient(135deg, rgb(225 37 27 / 0.05) 0 2px, transparent 2px 16px), var(--bg);
+}
+/* text that sits directly on the black page */
+body[data-system="cyberpunk"] .site-header { background: #000; border-color: var(--accent); }
+body[data-system="cyberpunk"] .site-header .btn,
+body[data-system="cyberpunk"] .home-link { color: #e8e4dc; border-color: #555; }
+body[data-system="cyberpunk"] main > h1,
+body[data-system="cyberpunk"] .lobby-head h1,
+body[data-system="cyberpunk"] .sheet-toolbar .btn { color: #fff; background: #000; border-color: var(--accent); }
+body[data-system="cyberpunk"] .site-header .badge { color: #e8e4dc; border-color: var(--accent); }
+body[data-system="cyberpunk"] main > p.muted,
+body[data-system="cyberpunk"] .lobby-head .muted,
+body[data-system="cyberpunk"] .back-link { color: #c9c4bc; }
+body[data-system="cyberpunk"] h1 { font-style: italic; font-weight: 700; }
+
+body[data-system="cyberpunk"] .panel {
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  border: 0;
+  padding-top: 0;
+}
+body[data-system="cyberpunk"] .panel__title {
+  margin: 0 -1.25rem 1rem;
+  padding: 0.35rem 1.25rem;
+  background: var(--accent);
+  color: #fff;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 1.05rem;
+  border: 0;
+}
+body[data-system="cyberpunk"] #wizard { padding-top: 1.25rem; }
+body[data-system="cyberpunk"] .stat { border: 2px solid var(--accent); background: #fff; padding-top: 0; }
+body[data-system="cyberpunk"] .stat__label { background: var(--accent); color: #fff; margin: 0 -0.25rem 0.3rem; padding: 0.15rem; }
+body[data-system="cyberpunk"] .portrait { border-radius: 0; border: 2px solid var(--accent); background: #111; color: #fff; }
+body[data-system="cyberpunk"] .code-box { background: #fff; color: var(--ink); }
+body[data-system="cyberpunk"] .steps button { background: #1c1c1f; color: #bbb; border-color: #333; }
+body[data-system="cyberpunk"] .steps button[aria-current="step"] { color: #fff; border-top-color: var(--accent); }
+body[data-system="cyberpunk"] .steps button[data-done="true"] { color: #fff; }
+body[data-system="cyberpunk"] .dots i { border-radius: 0; }
