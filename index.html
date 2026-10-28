@@ -1,119 +1,140 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your games</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap">
-    <link rel="stylesheet" href="css/style.css">
-    <script type="module" src="js/home.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tabletop Characters</title>
+  <meta name="description" content="Create characters for The Witcher TRPG, Vampire: The Masquerade and Cyberpunk 2020, and share them with your table. A MariaDB access-control project.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
-    <header class="site-header">
-        <span class="home-link">Tabletop characters</span>
-        <div class="header-tools"><div id="user-slot"></div></div>
-    </header>
+  <header class="top">
+    <span class="top__name">Tabletop Characters</span>
+    <nav aria-label="Page">
+      <a href="#how">How it works</a>
+      <a href="#games">Games</a>
+      <a href="#access">Who sees what</a>
+      <a href="https://github.com/Sakayxshi/TTRPGCharacterCreation">Code</a>
+    </nav>
+  </header>
 
-    <main>
-        <!-- Shown when nobody is logged in -->
-        <section id="auth" hidden class="auth">
-            <h1>Log in</h1>
-            <p class="muted">Create or join a tabletop game and build your character for it.
-                Supports The Witcher TRPG, Vampire: The Masquerade (5th ed.) and Cyberpunk 2020.</p>
-            <div class="panel">
-                <div class="tabs" role="tablist">
-                    <button type="button" role="tab" id="tab-login" aria-selected="true" aria-controls="login-form">Log in</button>
-                    <button type="button" role="tab" id="tab-signup" aria-selected="false" aria-controls="signup-form">Create account</button>
-                </div>
+  <main>
+    <!-- hero: the three sheets on the table -->
+    <section class="hero">
+      <div class="hero__text">
+        <h1>Build your character. Bring it to the table.</h1>
+        <p>Step-by-step character creation for The Witcher TRPG, Vampire: The Masquerade 5th edition and Cyberpunk 2020.
+          Your GM makes a game, you join with a code, and everyone sees exactly what they should, and nothing more.</p>
+        <div class="actions">
+          <a class="btn btn--main" href="demo/index.html">Try the demo</a>
+          <a class="btn" href="https://github.com/Sakayxshi/TTRPGCharacterCreation">View the code</a>
+        </div>
+        <p class="hero__note">The demo runs entirely in your browser. Log in with one of the demo accounts listed on the login page.</p>
+      </div>
+      <div class="table" aria-label="Character sheets from the three games">
+        <figure class="sheet sheet--witcher"><img src="img/witcher-sheet.webp" alt="A Witcher character sheet with statistics, derived values and skills" width="1140" height="900"><figcaption>The Witcher</figcaption></figure>
+        <figure class="sheet sheet--vtm"><img src="img/vtm-sheet.webp" alt="A Vampire: The Masquerade sheet with dot ratings for attributes and skills" width="1140" height="900"><figcaption>Vampire: The Masquerade</figcaption></figure>
+        <figure class="sheet sheet--cp"><img src="img/cyberpunk-sheet.webp" alt="A Cyberpunk 2020 sheet with stats, body values and skills" width="1140" height="900"><figcaption>Cyberpunk 2020</figcaption></figure>
+      </div>
+    </section>
 
-                <form id="login-form" role="tabpanel" aria-labelledby="tab-login">
-                    <div class="field">
-                        <label for="login-name">Username</label>
-                        <input type="text" id="login-name" name="username" autocomplete="username" required>
-                    </div>
-                    <div class="field">
-                        <label for="login-pass">Password</label>
-                        <input type="password" id="login-pass" name="password" autocomplete="current-password" required>
-                    </div>
-                    <p id="login-msg" class="message" role="alert" hidden></p>
-                    <button type="submit" class="btn btn--primary">Log in</button>
+    <!-- a real sequence, so it is numbered -->
+    <section id="how" class="block">
+      <h2>How a game works</h2>
+      <ol class="flow">
+        <li><strong>The GM makes a game</strong><span>Pick the system and a name. The site gives you a six-letter join code.</span></li>
+        <li><strong>Players join with the code</strong><span>No approval needed. Each player can be in up to three games.</span></li>
+        <li><strong>Everyone builds a character</strong><span>The creator walks you through the rulebook's steps and checks every rule as you go.</span></li>
+        <li><strong>The sheet is ready</strong><span>Open it any time, share your backstory if you want, or print it as a PDF.</span></li>
+      </ol>
+    </section>
 
-                    <details class="demo">
-                        <summary>Demo accounts</summary>
-                        <ul id="demo-list" class="demo-list"></ul>
-                    </details>
-                </form>
+    <section id="games" class="block">
+      <h2>Three games, each with its own sheet</h2>
+      <div class="games">
+        <article class="game game--witcher">
+          <img src="img/witcher-creator.webp" alt="The Witcher creator: choosing a race, with racial perks listed" width="1140" height="900" loading="lazy">
+          <div>
+            <h3>The Witcher TRPG</h3>
+            <p>Seven steps: race, lifepath, profession, statistics, pick-up skills, coin and outfit.
+              Pick the colours of your witcher school: Wolf, Cat, Griffin, Bear or Viper.</p>
+          </div>
+        </article>
+        <article class="game game--vtm">
+          <img src="img/vtm-creator.webp" alt="Vampire creator: placing attribute dots, with counters for each level" width="1140" height="840" loading="lazy">
+          <div>
+            <h3>Vampire: The Masquerade</h3>
+            <p>Eight steps from concept to convictions: clan and sire, the attribute and skill spreads,
+              Disciplines, predator type, and Advantages and Flaws.</p>
+          </div>
+        </article>
+        <article class="game game--cp">
+          <img src="img/cyberpunk-creator.webp" alt="Cyberpunk creator: name, handle, and which of them the crew can see" width="1140" height="900" loading="lazy">
+          <div>
+            <h3>Cyberpunk 2020</h3>
+            <p>Seven steps: role, stats (point-buy or rolled), career and pickup skills, style, motivations and starting cash.
+              Hide your real name from the crew and go by your handle.</p>
+          </div>
+        </article>
+      </div>
+      <p class="block__note">Every term has a small "?" next to it. Point at it for an explanation, or click it to keep it open.</p>
+    </section>
 
-                <form id="signup-form" role="tabpanel" aria-labelledby="tab-signup" hidden>
-                    <div class="field">
-                        <label for="signup-name">Username</label>
-                        <input type="text" id="signup-name" name="username" autocomplete="username"
-                               required minlength="3" maxlength="32" pattern="[a-z0-9_]{3,32}"
-                               aria-describedby="signup-name-help">
-                        <small id="signup-name-help">3–32 characters: lowercase letters, numbers and _. It is also your database account name.</small>
-                    </div>
-                    <div class="field">
-                        <label for="signup-pass">Password</label>
-                        <input type="password" id="signup-pass" name="password" autocomplete="new-password"
-                               required minlength="10" aria-describedby="signup-pass-help">
-                        <small id="signup-pass-help">At least 10 characters. Never stored: the database keeps only an ED25519 key derived from it.</small>
-                    </div>
-                    <p id="signup-msg" class="message" role="alert" hidden></p>
-                    <button type="submit" class="btn btn--primary">Create account</button>
-                </form>
-            </div>
-        </section>
+    <section id="access" class="block">
+      <h2>Who sees what</h2>
+      <p class="lead">This is the heart of the project. The rules live inside the database, not in the web page,
+        so they hold even if someone talks to the database directly.</p>
+      <div class="matrix-wrap">
+        <table class="matrix">
+          <caption class="visually-hidden">What each person can see of a character</caption>
+          <thead>
+            <tr><th scope="col">Looking at…</th><th scope="col">Basics</th><th scope="col">Full sheet</th><th scope="col">Backstory</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Your own character</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">Another player's character</th><td class="yes">Yes</td><td class="no">No</td><td class="maybe">If they share it</td></tr>
+            <tr><th scope="row">Any character, as the GM</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+            <tr><th scope="row">A game you're not in</th><td class="no">No</td><td class="no">No</td><td class="no">No</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="how-enforced">
+        <div>
+          <h3>Every user is a database account</h3>
+          <p>Signing up creates a real MariaDB account that logs in with ED25519. The site's tables never store a password.</p>
+        </div>
+        <div>
+          <h3>No direct access to tables</h3>
+          <p>Accounts get one role, and a <code>DENY</code> rule blocks every character table. Users can only read through views and write through procedures.</p>
+        </div>
+        <div>
+          <h3>Views check who is asking</h3>
+          <p>Each view asks MariaDB which account is logged in and returns only the rows that account may see.</p>
+        </div>
+        <div>
+          <h3>Procedures check every rule</h3>
+          <p>Joining a game, saving a character or sharing a backstory goes through a procedure that refuses anything against the rules.</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Shown when logged in -->
-        <section id="play" hidden class="stack">
-            <h1>Your games</h1>
-            <section class="panel">
-                <ul id="my-sessions" class="session-list"></ul>
-            </section>
+    <section class="block built">
+      <h2>Built with</h2>
+      <ul>
+        <li><strong>MariaDB 13.1</strong> for data and access control: ED25519, roles, <code>DENY</code>, definer views and stored procedures</li>
+        <li><strong>Plain HTML, CSS and JavaScript</strong> for the site, with no framework</li>
+        <li><strong>A Python backend</strong> connecting as each user (in progress). The demo uses an in-browser copy of the same rules instead.</li>
+      </ul>
+    </section>
+  </main>
 
-            <div class="grid-2">
-                <form id="join-form" class="panel">
-                    <h2 class="panel__title">Join a game</h2>
-                    <div class="field">
-                        <label for="join-code">Join code</label>
-                        <input type="text" id="join-code" name="join_code" class="mono code-input"
-                               required minlength="6" maxlength="6" autocomplete="off"
-                               autocapitalize="characters" spellcheck="false" aria-describedby="join-help">
-                        <small id="join-help">The 6-character code from your GM.</small>
-                    </div>
-                    <p id="join-msg" class="message" role="alert" hidden></p>
-                    <button type="submit" class="btn btn--primary">Join as player</button>
-                </form>
-
-                <form id="create-form" class="panel">
-                    <h2 class="panel__title">New game</h2>
-                    <div class="field">
-                        <label for="session-name">Name</label>
-                        <input type="text" id="session-name" name="session_name" maxlength="100" required>
-                    </div>
-                    <fieldset class="choices choices--compact">
-                        <legend>System</legend>
-                        <label class="choice">
-                            <input type="radio" name="game_type" value="witcher" required checked>
-                            <span class="choice__title">The Witcher TRPG</span>
-                        </label>
-                        <label class="choice">
-                            <input type="radio" name="game_type" value="vtm">
-                            <span class="choice__title">Vampire: The Masquerade</span>
-                        </label>
-                        <label class="choice">
-                            <input type="radio" name="game_type" value="cyberpunk">
-                            <span class="choice__title">Cyberpunk 2020</span>
-                        </label>
-                    </fieldset>
-                    <p id="create-msg" class="message" role="alert" hidden></p>
-                    <button type="submit" class="btn btn--primary">Create game</button>
-                    <p class="muted small">You become its Game Master.</p>
-                </form>
-            </div>
-        </section>
-    </main>
+  <footer class="foot">
+    <p>Made by Omar Aslan for Databases (CO-560) at Constructor University.</p>
+    <p>Part of the <a href="https://mariadb.org/bachelor_hackathon_2026-09/">MariaDB student projects</a>, area 5: authentication and access control.</p>
+    <p class="foot__small">The Witcher, Vampire: The Masquerade and Cyberpunk belong to their publishers. This is a fan-made study project.</p>
+  </footer>
 </body>
 </html>

@@ -754,3 +754,7 @@ h2 .pool, h3 .pool { font-size: 0.85rem; font-weight: 600; text-transform: none;
 .choice__extra .vigor-chip { display: flex; width: fit-content; }
 .choice__extra strong .info { font-weight: 700; }
 .field > .option-note { margin-top: 0.15rem; }
+
+/* demo version only */
+.demo-bar { padding: 0.5rem clamp(1rem, 4vw, 2rem); font-size: 0.88rem; text-align: center; background: #2a2416; color: #f0e2bf; border-bottom: 1px solid #5c4a22; }
+.demo-bar a { color: #f5d48a; margin-left: 0.4rem; }
